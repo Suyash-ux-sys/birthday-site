@@ -90,7 +90,7 @@
       width: 40px;
       height: 60px;
       background: #ff8fc1;
-      border-radius: 50% 50% 50% 50%;
+      border-radius: 50%;
       animation: floatUp 10s linear infinite;
     }
 
@@ -106,15 +106,9 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
-      100% {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0;
-      }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
@@ -134,7 +128,7 @@
     Made with 💗 because you deserved at least this.
   </div>
 
-  <!-- 🎈 Balloon Generator -->
+  <!-- 🎈 Balloons -->
   <script>
     for (let i = 0; i < 30; i++) {
       let b = document.createElement('div');
@@ -146,7 +140,7 @@
     }
   </script>
 
-  <!-- ⌨️ Typing Effect -->
+  <!-- ⌨️ Typing Animation -->
   <script>
     const message = `Hey, it’s been a while.
 
@@ -173,23 +167,46 @@ Happy Birthday again. You’re unforgettable.
     window.onload = typeWriter;
   </script>
 
-  <!-- 🎵 Background Music -->
+  <!-- 🎶 Background Music -->
   <audio id="bg-music" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5ab54f59a6.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2022/03/01/audio_4d1fa207c3.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
   <script>
+    // Try to autoplay, fallback if blocked
     window.addEventListener('load', () => {
       const music = document.getElementById('bg-music');
-      const playPromise = music.play();
+      const tryPlay = () => {
+        const promise = music.play();
+        if (promise !== undefined) {
+          promise.catch(() => {
+            // Ask user to click anywhere to start music if blocked
+            const hint = document.createElement('div');
+            hint.innerText = '🔊 Tap anywhere to play music';
+            hint.style.position = 'fixed';
+            hint.style.top = '50%';
+            hint.style.left = '50%';
+            hint.style.transform = 'translate(-50%, -50%)';
+            hint.style.background = '#fff8fc';
+            hint.style.padding = '15px 25px';
+            hint.style.borderRadius = '20px';
+            hint.style.boxShadow = '0 0 20px rgba(0,0,0,0.1)';
+            hint.style.fontSize = '1em';
+            hint.style.zIndex = '9999';
+            hint.style.cursor = 'pointer';
+            document.body.appendChild(hint);
 
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          // Music started
-        }).catch((error) => {
-          console.log("Autoplay blocked. User may need to interact.");
-        });
-      }
+            const unlock = () => {
+              music.play();
+              document.body.removeChild(hint);
+              document.body.removeEventListener('click', unlock);
+            };
+
+            document.body.addEventListener('click', unlock);
+          });
+        }
+      };
+      tryPlay();
     });
   </script>
 
