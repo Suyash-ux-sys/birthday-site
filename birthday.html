@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffe4ec, #d0f0fd);
+      font-family: 'Quicksand', sans-serif;
+      color: #444;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #ff5d8f;
+    }
+
+    .heart {
+      font-size: 2em;
+      animation: pulse 1.5s infinite;
+      color: #ff5d8f;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .note {
+      background: #fff8fc;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 700px;
+      box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+    }
+
+    .note p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background-color: #ff5d8f;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #ff2e6e;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    /* 🎈 Balloon Styles */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 40px;
+      height: 60px;
+      background: #ff8fc1;
+      border-radius: 50% 50% 50% 50%;
+      animation: floatUp 10s linear infinite;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #999;
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Happy Birthday, Princess 🎀</h1>
+    <div class="heart">❤️</div>
+  </header>
+
+  <div class="note">
+    <p>
+      Hey, it’s been a while.<br><br>
+
+      I know we haven’t talked much lately—life gets crazy sometimes—but that doesn’t mean you weren’t on my mind. So I made you something small. Nothing fancy, just a little digital hug with confetti. 🎉<br><br>
+
+      You’re special. Not because of how you look (though you do look amazing), but because of how you made me feel when we talked, when we laughed, when we flirted like time wasn’t real.<br><br>
+
+      I hope this year brings you love, peace, and the kind of joy you deserve. And maybe… a message from me you weren’t expecting 🫣<br><br>
+
+      Happy Birthday again. You’re unforgettable.<br>
+      — Yours, [Suyash]
+    </p>
+
+    <a class="btn" href="tel:+91XXXXXXXXXX">Call Me Maybe? 📞</a>
+  </div>
+
+  <div class="footer">
+    Made with 💗 because you deserved at least this.
+  </div>
+
+  <!-- 🎈 Balloon Generator -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let b = document.createElement('div');
+      b.className = 'balloon';
+      b.style.left = Math.random() * 100 + 'vw';
+      b.style.animationDuration = (6 + Math.random() * 6) + 's';
+      b.style.background = ['#FF8FC1', '#FFC0CB', '#FFD700', '#ADD8E6'][Math.floor(Math.random() * 4)];
+      document.body.appendChild(b);
+    }
+  </script>
+
+</body>
+</html>
